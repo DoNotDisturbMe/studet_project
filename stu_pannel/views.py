@@ -14,8 +14,9 @@ from django.views import View
 from  django.urls import  reverse_lazy
 from django.views.generic.edit import CreateView
 from .decorators import login_required_with_autologout
-
+from .models import Product
 
 def hello(request):
-    welc = "Prince"
-    return render(request, "stu_pannel/HomePage.html", {"data":  welc})
+    Product_data = Product.objects.all()
+    data = {"Product_data":Product_data}
+    return render(request, "stu_pannel/HomePage.html", data)

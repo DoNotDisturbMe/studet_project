@@ -6,5 +6,5 @@ from django.views import View
 from . import views
 
 urlpatterns = [
-path('',views.hello, name = "helo")
+path('',views.hello, name = "home")
 ]
