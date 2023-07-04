@@ -18,4 +18,4 @@ from .decorators import login_required_with_autologout
 
 def hello(request):
     welc = "Prince"
-    return render(request, "bash.html", {"data": "Hellow" + welc})
+    return render(request, "stu_pannel/HomePage.html", {"data":  welc})
