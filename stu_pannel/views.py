@@ -16,7 +16,25 @@ from django.views.generic.edit import CreateView
 from .decorators import login_required_with_autologout
 from .models import Product
 
-def hello(request):
+def home(request):
     Product_data = Product.objects.all()
     data = {"Product_data":Product_data}
     return render(request, "stu_pannel/HomePage.html", data)
+
+def about(request):
+    return  render(request, "admin_pannel/about.html")
+
+
+def career(request):
+    return render(request, "admin_pannel/career.html")
+
+def contact(request):
+    return  render(request, "admin_pannel/contact.html")
+
+
+def productdetails(request, id):
+    id_data = Product.objects.filter(id = id)
+    data = {
+        "pdata":id_data
+    }
+    return  render(request, 'stu_pannel/ProductDetails.html', data)

@@ -10,6 +10,7 @@
       <link rel="icon" href="{% static 'icon.png' %}">
       <link rel="stylesheet" href="{% static 'navbar.css' %}">
         <link rel="stylesheet" href="{% static 'stu_pannel/css/HomePage.css' %}">
+        <link rel="stylesheet" href="{% static 'stu_pannel/css/ProductDetails.css' %}">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -48,9 +49,9 @@
           <div id="navbar-menu" aria-labelledby="navbar-toggle">
               <ul class="navbar-links">
                   <li class="navbar-item"><a class="navbar-link" href="{% url "home" %}">Home</a></li>
-                  <li class="navbar-item"><a class="navbar-link" href="#">About</a></li>
-                  <li class="navbar-item"><a class="navbar-link" href="#">Careers</a></li>
-                  <li class="navbar-item"><a class="navbar-link" href="#">Contact</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "about" %}">About</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "career" %}">Careers</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "contact" %}">Contact</a></li>
                   <li class="navbar-item"><a class="navbar-link" href="#">Login/Register</a></li>
               </ul>
           </div>

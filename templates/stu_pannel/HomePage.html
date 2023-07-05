@@ -15,7 +15,7 @@
         </div> <br>
         <div class="all_button">
             <p><br> Based on : {{ x.Product_programingi_language }} <br> <strong style="color: red"> Price:  Rs/ {{ x.product_price }} </strong> <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
+            <button class="btn-block btn1 "><a href="{% url "pdetails" x.id %}">Details</a></button><br>
             <button class="btn-block btn2"><a href="#">Buy</a></button>
         </div>
     </div>

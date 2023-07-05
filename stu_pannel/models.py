@@ -20,8 +20,10 @@ class Product(models.Model):
     product_name = models.CharField(max_length=200)
     Product_building_year = models.DateTimeField()
     Product_programingi_language = models.CharField(max_length=300)
+    Product_Addition_Programing_language = models.CharField(max_length=600)
     product_summery = models.CharField(max_length=10000)
     product_price = models.IntegerField()
+    dicount_product_price = models.IntegerField()
 
 
 

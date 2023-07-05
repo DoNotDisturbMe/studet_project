@@ -1,0 +1,53 @@
+{% load static %}
+{% include 'bash.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
+
+<div class="row main-head" style="margin: 70px 0px 0px 40px">
+    {% for pdatum in pdata %}
+    <div class="row-cols-1 row-1">
+        <div class="all_image">
+            <img src="{{ pdatum.product_img.url}}">
+        </div>
+
+        <div class="product_id">
+            <p> {{ pdatum.id }}</p>
+        </div>
+
+        <div class="product-name">
+            <p> {{ pdatum.product_name }}</p>
+        </div>
+
+        <div class="product_building_year">
+            <p>{{ pdatum.Product_building_year.year }}</p>
+        </div>.
+
+        <div class="programing_language">
+            <p>{{ pdatum.Product_programingi_language }} <span>
+                <p> {{pdatum.Product_Addition_Programing_language }}</p>
+            </span></p>
+        </div>
+
+        <div class="summery_of_product">
+            <p>{{ pdatum.product_summery }}</p>
+        </div>
+
+    </div>
+
+    <div class="row-cols-2">
+        <div class="mrp_price">
+            <p>{{ pdatum.product_price }}</p>
+        </div>
+        <div class="discount_price">
+            <p>{{ pdatum.dicount_product_price }}</p>
+        </div>
+        <div>
+            <button class="btn fa-cart-arrow-down btn_class"><a href="#">Buy</a> </button>
+        </div>
+    </div>
+ {% endfor %}
+</div>
+
+</fieldset>
+{% endblock %}
