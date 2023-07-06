@@ -35,6 +35,7 @@ def contact(request):
 def productdetails(request, id):
     id_data = Product.objects.filter(id = id)
     data = {
-        "pdata":id_data
+        "pdata":id_data,
+        # "off":discount_in_percentage
     }
-    return  render(request, 'stu_pannel/ProductDetails.html', data)
+    return render(request, 'stu_pannel/ProductDetails.html', data)

@@ -15,7 +15,7 @@ class ExtendedUser(models.Model):
 
 
 class Product(models.Model):
-    product_id = models.OneToOneField(User, max_length=100, on_delete = models.CASCADE)
+    product_id = models.CharField(max_length=600)
     product_img = models.ImageField(upload_to="Product_Img/")
     product_name = models.CharField(max_length=200)
     Product_building_year = models.DateTimeField()
