@@ -1,0 +1,104 @@
+{% load static %}
+{% include 'bash.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 120px; margin-bottom: 64px"></h1>
+<style>
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+    font-family: -apple-system;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+     font-family: -apple-system;
+
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.loginpage_in_register{
+    text-align: center;
+    color: black;
+    text-space: 30px;
+    font-family: -apple-system;
+}
+
+.loginpage_in_register a{
+    text-decoration:none;
+    color: green;
+    width: 50px;
+    height: 30px;
+}
+{##}
+{#.loginpage_in_register a:hover{#}
+{#   background-color: cornflowerblue;#}
+{#    border: 2px solid black;#}
+{#    border-radius: 30px;#}
+{#    color: white;#}
+{#    text-space: 20px;#}
+{#    padding: 5px;#}
+</style>
+
+<!-- signup.html -->
+<h2>Sign Up</h2>
+<form method="POST" id="signup-form ">
+  {% csrf_token %}
+    <label  for="id_username">Username:</label>
+    <input type="text" class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_username"  spellcheck="true"  required>
+    <br>
+    <label for="id_password1">Password:</label>
+   <input class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass1" type="password" required stroke="*" >
+    <br>
+    <label for="id_password2">Confirm Password:</label>
+    <input class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass2" type="password" required stroke="*" >
+    <br>
+    <button type="submit">Sign Up</button>
+    <p class="loginpage_in_register" >I have already account ! <br> <a href="{% url "login" %}"> Login </a> </p>
+
+<div class="error-message">
+  {% if error_messages %}
+    <ul class="errorlist">
+      {% for message in error_messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+</form>
+</fieldset>
+{% endblock %}

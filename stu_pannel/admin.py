@@ -13,8 +13,8 @@ admin.site.register(Product, AdminProduct)
 
 class AdminUser(admin.ModelAdmin):
     list_display = [
-        "user", "First_name", "Last_name", "Gender",
-        "Phone_number", "WhatsApp", "email", "address",
-        "pincode"
+        "user_id", "user_name", "Phone_number",
+        "email", "address", "pincode",
+        'district','photo_user'
     ]
 admin.site.register(ExtendedUser, AdminUser)

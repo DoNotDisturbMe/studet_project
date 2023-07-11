@@ -10,5 +10,15 @@ urlpatterns = [
     path('about',views.about, name = "about"),
     path('career', views.career, name = "career"),
     path('contact', views.contact, name = "contact"),
-    path('productdetails/<int:id>', views.productdetails, name = "pdetails")
+    path('productdetails/<int:id>', views.productdetails, name = "pdetails"),
+
+#     login
+    path('login', views.LoginPage, name= "login"),
+    path('signup', views.RegisterPage, name= "signup"),
+    path('logout/', views.LogoutPage, name='logout'),
+
+
+#     UserProfile
+    path('Profile/',views.userprofile, name= "Profile"),
+    path('account/', views.UserAccount, name = "account"),
 ]

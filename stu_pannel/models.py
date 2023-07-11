@@ -3,15 +3,14 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 
 class ExtendedUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    First_name = models.CharField(max_length=100)
-    Last_name= models.CharField(max_length=100)
-    Gender = models.CharField(max_length=100)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
     Phone_number = models.CharField(max_length=100)
-    WhatsApp  = models.CharField(max_length=30)
     email = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
     pincode =  models.IntegerField()
+    district = models.CharField(max_length=30)
+    photo_user = models.ImageField(upload_to="user_img")
 
 
 class Product(models.Model):
@@ -24,6 +23,8 @@ class Product(models.Model):
     product_summery = models.CharField(max_length=10000)
     product_price = models.IntegerField()
     dicount_product_price = models.IntegerField()
+
+
 
 
 

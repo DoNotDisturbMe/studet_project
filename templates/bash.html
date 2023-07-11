@@ -9,6 +9,10 @@
       <!-- Link -->
       <link rel="icon" href="{% static 'icon.png' %}">
       <link rel="stylesheet" href="{% static 'navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'stu_pannel/css/account.css' %}">
+        <link rel="stylesheet" href="{% static 'admin_pannel/css/career.css' %}">
+        <link rel="stylesheet" href="{% static 'admin_pannel/css/contact.css' %}">
+        <link rel="stylesheet" href="{% static 'admin_pannel/css/about.css' %}">
         <link rel="stylesheet" href="{% static 'stu_pannel/css/HomePage.css' %}">
         <link rel="stylesheet" href="{% static 'stu_pannel/css/ProductDetails.css' %}">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
@@ -39,33 +43,34 @@
              </div>
              STUDENT PROJECT
          </a>
-
           <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
           <div id="navbar-menu" aria-labelledby="navbar-toggle">
               <ul class="navbar-links">
-                  <li class="navbar-item"><a class="navbar-link" href="{% url "home" %}">Home</a></li>
+                  {% if user.is_authenticated %}
+                    <li class="navbar-item"><a class="navbar-link" href="{% url "home" %}">Home</a></li>
                   <li class="navbar-item"><a class="navbar-link" href="{% url "about" %}">About</a></li>
                   <li class="navbar-item"><a class="navbar-link" href="{% url "career" %}">Careers</a></li>
                   <li class="navbar-item"><a class="navbar-link" href="{% url "contact" %}">Contact</a></li>
-                  <li class="navbar-item"><a class="navbar-link" href="#">Login/Register</a></li>
+                   <li class="navbar-item"><a class="navbar-link" href="{% url 'account' %}">{{ request.user }}</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+                      {% else %}
+                      <li class="navbar-item"><a class="navbar-link" href="{% url "home" %}">Home</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "about" %}">About</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "career" %}">Careers</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url "contact" %}">Contact</a></li>
+                  <li class="navbar-item"><a class="navbar-link" href="{% url 'login' %}">Login</a> <span><a class="navbar-link" href="{% url 'signup' %}">Register</a></span></li>
+                  {% endif %}
               </ul>
           </div>
       </nav>
 </div>
-
-
-
-
 {% block main-content %}{% endblock %}
 {% block banner %} {% endblock banner %}
 {% block payment %} {% endblock payment %}
-
-
 <!-- Footer --->
 <style>
     footer{
@@ -105,7 +110,9 @@
 <script src = "{% static 'bootstrap3.3.7/js/bootstrap.js' %}"></script>
 <script src = "{% static 'bootstrap3.3.7/js/bootstrap.esm.js' %}"></script>
 <script src = "{% static 'bootstrap3.3.7/js/bootstrap.bundle.js' %}"></script>
-{#My#}
-  <script src="{% static 'navbar.js' %}"> </script>
+<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+  {#My#}
+<script src="{% static 'navbar.js' %}"> </script>
+<script src="{% static 'stu_pannel/js/account.js' %}"></script>
 </html>
 

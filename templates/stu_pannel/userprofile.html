@@ -1,0 +1,111 @@
+{% load static %}
+{% include 'bash.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 120px; margin-bottom: 64px"></h1>
+
+<style>
+.container1 {
+      max-width: 500px;
+      margin: 60px auto;
+      {#  margin-bottom: 100px;#}
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .user-photo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .user-photo img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+
+  <div class="container1">
+{#      {% for x in data %}#}
+    <h1>User Profile</h1>
+
+    <div class="user-photo">
+      <img src="" alt="User Photo">
+    </div>
+
+    <form method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile" required>
+      </div>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="name" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required>
+      </div>
+
+      <div class="form-group">
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" required>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" name="photo" required>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Save" >
+      </div>
+    </form>
+  </div>
+{#{% endfor %}#}
+</fieldset>
+{% endblock %}
