@@ -1,23 +1,27 @@
-{% load static %}
-{% include 'bash.html' %}
-{% block main-content %}
-<fieldset>
-<h1 style="margin-top: 120px; margin-bottom: 64px"></h1>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Profile</a>
-  <a href="#">Cart Item</a>
-  <a href="#">Order</a>
-  <a href="#">Wislist</a>
+    {% load static %}
+    {% include 'bash.html' %}
+    {% block main-content %}
+    <fieldset>
+    <h1 style="margin-top: 70px; margin-bottom: 64px"></h1>
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <a href="{% url 'userprofile' request.user.id %}">Profile</a>
+    <a href="{% url 'cart' %}">Cart Item</a>
+    <a href="#">Order</a>
+    <a href="#">Wislist</a>
     <a href="#">Support</a>
-</div>
+    <a href="#">Delete Account</a>
+{#    <a href="{% url 'Profile' x.id %}">Complete/Edit Profile</a>#}
 
-<div id="main">
-   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
 
-</div>
-</fieldset>
-{% endblock %}
+    <div id="main">
+    <span style="font-size:30px;cursor:pointer; margin-top: 0px" onclick="openNav()">Open &#9776; </span>
+
+    </div>
+    </fieldset>
+    {% endblock %}
 
 
 

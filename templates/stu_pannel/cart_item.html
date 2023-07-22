@@ -1,0 +1,30 @@
+<!-- templates/cart.html -->
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 20px; margin-bottom: 10px"></h1>
+<div  class="" id="showingcart" >
+    <h2>Shopping Cart</h2>
+    {% for x in data_cart %}
+    <div class="product">
+        <div class="product_phot"><img src="{{ x.product.product_img.url }}" alt="Project images"></div>
+        <div class="product_details">
+            <p class="product_name">Product Name: {{ x.product.product_name }} </p>
+            <p class="product_id">Product Id: {{ x.product.product_id }}</p>
+            <p class="product_qut">Product Quantity: <i class="fa-minus"></i> {{ x.quantity }} <i class="fa-plus"></i></p>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="product_bills">
+        <p class="product_price">Item Price: {{totalPrice}} </p>
+        <p class="GST">IGST:{{ GST }}  </p>
+        <p class="">--------------------------</p>
+        <hr style="background-color: chartreuse">
+        <p class="Total">Total: {{ GST_Total }} </p>
+        <button class="btn"><a href="#">Buy</a></button>
+    </div>
+ </div>
+{% endblock %}
+</fieldset>

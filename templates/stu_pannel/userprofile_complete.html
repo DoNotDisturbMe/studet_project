@@ -1,5 +1,6 @@
 {% load static %}
 {% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
 {% block main-content %}
 <fieldset>
 <h1 style="margin-top: 120px; margin-bottom: 64px"></h1>
@@ -54,51 +55,77 @@
       color: #fff;
       cursor: pointer;
     }
+
+    .badge-btn{
+        background-color: chocolate;
+        width: 70px;
+        height: 25px;
+        {#padding: 5px;#}
+        padding-left: 6px;
+        color: white;
+        border-start-end-radius: 30px;
+        border-end-end-radius: 30px;
+    }
+    .badge-btn a{
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        block-size: 100%;
+        color: white;
+    }
   </style>
 
+
+
+{% for x in  data %}
   <div class="container1">
+
+  <div class="badge-btn">
+    <a href="{% url 'account' %}"> Go Back </a>
+</div>
+
 {#      {% for x in data %}#}
     <h1>User Profile</h1>
-
-    <div class="user-photo">
-      <img src="" alt="User Photo">
-    </div>
-
     <form method="post", enctype="multipart/form-data">
         {% csrf_token %}
+
+         <div class="user-photo">
+      <img src="{{ x.photo_user.url }}" alt="User Photo">
+    </div>
+
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" value="{{ x.user_name }}" id="name" name="name" required>
       </div>
 
       <div class="form-group">
         <label for="mobile">Mobile Number:</label>
-        <input type="text" id="mobile" name="mobile" required>
+        <input type="text" id="mobile" value="{{ x.Phone_number }}" name="mobile" required>
       </div>
 
         <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="name" name="email" required>
+        <input type="email" id="name" value="{{ x.email }}" name="email" required>
       </div>
 
       <div class="form-group">
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required>
+        <input type="text" id="address" value="{{ x.address }}" name="address" required>
       </div>
 
       <div class="form-group">
         <label for="pincode">Pincode:</label>
-        <input type="text" id="pincode" name="pincode" required>
+        <input type="text" id="pincode" value="{{ x.pincode }}" name="pincode" required>
       </div>
 
       <div class="form-group">
         <label for="district">District:</label>
-        <input type="text" id="district" name="district" required>
+        <input type="text" id="district" value="{{ x.district }}" name="district" required>
       </div>
 
       <div class="form-group">
         <label for="photo">Photo:</label>
-        <input type="file" id="photo" name="photo" required>
+        <input type="file" id="photo"  name="photo" required>
       </div>
 
       <div class="form-group">
@@ -106,6 +133,7 @@
       </div>
     </form>
   </div>
+{% endfor %}
 {#{% endfor %}#}
 </fieldset>
 {% endblock %}

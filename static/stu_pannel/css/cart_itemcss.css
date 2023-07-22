@@ -1,0 +1,47 @@
+#showingcart{   /* main container id */
+    background-color: whitesmoke;
+    color: black;
+    height: 80%;
+    width: 80%;
+    float: left;
+    margin: 0px 0px 100px 60px;
+    transition: 0.5s;
+
+
+}
+
+
+.product{
+    background-color: cornflowerblue;
+    float: left;
+    width: 50%;
+    height: 50%;
+    margin: 20px 0px 20px 10px;
+}
+
+.product .product_phot{
+    width: 200px;
+    height: 200px;
+}
+
+.product .product_phot img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.product_bills{
+   float: left;
+    background-color: cyan ;
+    width: 40%;
+    height: 100%;
+    margin: 20px 0px 20px 10px;
+    position: inherit;
+    text-align: center;
+
+}
+
+.dividerr{
+    width: 100%;
+}
+

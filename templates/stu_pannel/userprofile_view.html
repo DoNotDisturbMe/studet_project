@@ -1,0 +1,103 @@
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 70px; margin-bottom: 64px"></h1>
+  <style>
+    /* CSS styling for the user profile */
+    #userProfile {
+      max-width: 600px;
+      margin: 0px auto 64px auto;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    #userDetails {
+      margin-top: 20px;
+    }
+    #photoUser {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+    p {
+      margin: 10px 0;
+      color: #333;
+    }
+    strong {
+      font-weight: bold;
+    }
+.Profile_CE{
+    {#background-color: chocolate;#}
+}
+.Profile_CE p {
+    float: left;
+    text-decoration: none;
+    word-spacing: 2px;
+    color:white;
+    border: solid 2px black;
+    background-color:green;
+    border-radius: 30px;
+}
+.Profile_CE p:hover{
+    background-color: #0f5132;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.Profile_CE p a{
+    text-decoration: none;
+    color: white;
+    padding: 6px;
+}
+
+</style>
+{% for x in user_prfoile %}
+  <div id="userProfile">
+    <h2>User Profile</h2>
+    <div class="Profile_CE">
+        <p><a  href="{% url 'Profile' x.id %}">Complete/Edit Profile</a></p> <br>
+    </div>
+    <div id="userDetails">
+      <img id="photoUser" src="{{ x.photo_user.url }}" alt="User Photo">
+      <p><strong>User ID:</strong> <span id="userId"> {{ x.user_id }}</span></p>
+      <p><strong>User Name:</strong> <span id="userName">{{ x.user_name }}</span></p>
+      <p><strong>Phone Number:</strong> <span id="phoneNumber"> {{ x.Phone_number }}</span></p>
+      <p><strong>Email:</strong> <span id="email">{{ x.email }}</span></p>
+      <p><strong>Address:</strong> <span id="address">{{ x.address }}</span></p>
+      <p><strong>Pincode:</strong> <span id="pincode">{{ x.pincode }}</span></p>
+      <p><strong>District:</strong> <span id="district">{{ x.district  }}</span></p>
+    </div>
+      {% endfor %}
+  </div>
+{#  <script>#}
+{#    // JavaScript code to fetch and display user information#}
+{#    // Replace the URL with the endpoint to fetch the user's data#}
+{#    const apiUrl = 'productdetails/{% request.user %}';#}
+{##}
+{#    // Fetch the user data from the API#}
+{#    fetch(apiUrl)#}
+{#      .then(response => response.json())#}
+{#      .then(data => {#}
+{#        // Update the HTML elements with the fetched user data#}
+{#        document.getElementById('photoUser').src = data.photo_user;#}
+{#        document.getElementById('userId').textContent = data.user_id;#}
+{#        document.getElementById('userName').textContent = data.user_name;#}
+{#        document.getElementById('phoneNumber').textContent = data.Phone_number;#}
+{#        document.getElementById('email').textContent = data.email;#}
+{#        document.getElementById('address').textContent = data.address;#}
+{#        document.getElementById('pincode').textContent = data.pincode;#}
+{#        document.getElementById('district').textContent = data.district;#}
+{#      })#}
+{#      .catch(error => console.log('Error:', error));#}
+{#  </script>#}
+</fieldset>
+{% endblock %}

@@ -10,7 +10,9 @@ urlpatterns = [
     path('about',views.about, name = "about"),
     path('career', views.career, name = "career"),
     path('contact', views.contact, name = "contact"),
-    path('productdetails/<int:id>', views.productdetails, name = "pdetails"),
+    path('productdetails/<id>', views.productdetails, name = "pdetails"),
+    path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart', views.cartItem, name = "cart"),
 
 #     login
     path('login', views.LoginPage, name= "login"),
@@ -19,6 +21,8 @@ urlpatterns = [
 
 
 #     UserProfile
-    path('Profile/',views.userprofile, name= "Profile"),
+    path('Profile/<id>',views.userprofile_complete, name= "Profile"),
     path('account/', views.UserAccount, name = "account"),
+#     Account Option
+    path('profile_view/<id>', views.userprofile_view, name = "userprofile")
 ]

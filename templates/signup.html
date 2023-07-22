@@ -12,7 +12,7 @@ h2 {
 
 form {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0px auto 30px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
@@ -72,33 +72,79 @@ button[type="submit"]:hover {
 {#    color: white;#}
 {#    text-space: 20px;#}
 {#    padding: 5px;#}
+
+
+
+.messages{
+    background-color: red;
+    color: white;
+    border: 3px solid cornflowerblue;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-block: cornflowerblue;
+    text-align: center;
+
+}
+
+{#.validation{#}
+{#    display: #}
+{##}
+{#}#}
+
 </style>
 
 <!-- signup.html -->
 <h2>Sign Up</h2>
 <form method="POST" id="signup-form ">
   {% csrf_token %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
     <label  for="id_username">Username:</label>
     <input type="text" class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_username"  spellcheck="true"  required>
     <br>
     <label for="id_password1">Password:</label>
-   <input class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass1" type="password" required stroke="*" >
+   <input id="pass1"  minlength="8"  class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass1" type="password" required stroke="*" >
     <br>
+{#pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"#}
     <label for="id_password2">Confirm Password:</label>
-    <input class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass2" type="password" required stroke="*" >
+    <input id="pass1"  minlength="8" class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass2" type="password" required stroke="*" >
     <br>
-    <button type="submit">Sign Up</button>
+    <button type="submit" onsubmit="form_check()">Sign Up</button>
     <p class="loginpage_in_register" >I have already account ! <br> <a href="{% url "login" %}"> Login </a> </p>
+    <div class="validation" id="validation" >
+        <ul>
+        <li style="" class="v_1"> Password must contain at least </li>
+        <li class="v_2"> One digit. </li>
+        <li class="v_3"> One lowercase letter. </li>
+        <li class="v_4"> One uppercase letter. </li>
+        <li class="v_5"> Password should be 8 character long.</li>
+        </ul>
+    </div>
 
-<div class="error-message">
-  {% if error_messages %}
-    <ul class="errorlist">
-      {% for message in error_messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 </div>
 </form>
+<script>
+    {#let form_check = ()=>{#}
+    {#      var passwordInput1 = document.getElementById("pass1");#}
+    {#      var passwordInput2= document.getElementById('pass1');#}
+    {#       var validation = document.getElementById("validation");#}
+    {#        if (passwordInput1 === passwordInput2){#}
+    {#            return true#}
+    {#        }#}
+    {#        else{#}
+    {#            validation.style.display = 'inline';#}
+    {#        }#}
+    {##}
+          {#passwordInput2 , passwordInput1.pattern = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";#}
+          {#passwordInput.title = "Password must contain at least one digit, one lowercase letter, one uppercase letter, and be at least 8 characters long.";#}
+    {##}
+
+
+</script>
 </fieldset>
 {% endblock %}

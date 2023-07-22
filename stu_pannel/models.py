@@ -4,14 +4,13 @@ from django.utils.safestring import mark_safe
 
 class ExtendedUser(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    user_name = models.CharField(max_length=100)
-    Phone_number = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    address = models.CharField(max_length=200)
-    pincode =  models.IntegerField()
-    district = models.CharField(max_length=30)
+    user_name = models.CharField(max_length=100, default="default")
+    Phone_number = models.CharField(max_length=100 ,default="default")
+    email = models.CharField(max_length=100,default="default")
+    address = models.CharField(max_length=200,default="default")
+    pincode =  models.IntegerField(default="default")
+    district = models.CharField(max_length=30,default="default")
     photo_user = models.ImageField(upload_to="user_img")
-
 
 class Product(models.Model):
     product_id = models.CharField(max_length=600)
@@ -23,6 +22,13 @@ class Product(models.Model):
     product_summery = models.CharField(max_length=10000)
     product_price = models.IntegerField()
     dicount_product_price = models.IntegerField()
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # If you have user authentication
+    date_added = models.DateTimeField(auto_now_add=True)
+
 
 
 

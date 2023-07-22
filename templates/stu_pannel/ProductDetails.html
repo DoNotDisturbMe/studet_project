@@ -25,7 +25,8 @@
                 <p class="product-description">{{ x.Product_programingi_language}}</p>
                 <p class="product-description"> {{x.Product_Addition_Programing_language }} <br> {{ x.product_summery }}</p>
                 <div class="product-action-buttons">
-                    <button class="add-to-cart-button">Add to Cart</button>
+                    <button class="add-to-cart-button" href="{% url 'add_to_cart' x.pk %}">Add to Cart</button>
+                    <p class="add-to-cart-button"><a href="{% url 'add_to_cart' x.id %}"> Add to Cart </a> </p>
                     <button class="buy-now-button">Buy Now</button>
                 </div>
             </div>
