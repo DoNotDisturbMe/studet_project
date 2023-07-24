@@ -9,8 +9,8 @@
     <a href="{% url 'userprofile' request.user.id %}">Profile</a>
     <a href="{% url 'cart' %}">Cart Item</a>
     <a href="#">Order</a>
-    <a href="#">Wislist</a>
-    <a href="#">Support</a>
+    <a href="{% url 'showwislist' %}">Wislist</a>
+    <a href="">Support</a>
     <a href="#">Delete Account</a>
 {#    <a href="{% url 'Profile' x.id %}">Complete/Edit Profile</a>#}
 

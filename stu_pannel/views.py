@@ -5,8 +5,7 @@ from django.views.decorators.cache import never_cache
 from django.core.mail import message
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponseRedirect, HttpResponse, request, JsonResponse
-from  django.shortcuts import redirect
-
+from  django.shortcuts import redirect, get_object_or_404
 # Authentication System Module
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -17,7 +16,12 @@ from django.views import View
 from  django.urls import  reverse_lazy
 from django.views.generic.edit import CreateView
 from .decorators import login_required_with_autologout
-from .models import Product, ExtendedUser, CartItem
+from .models import Product, ExtendedUser, CartItem, wislist
+
+#payment
+from django.shortcuts import render
+from django.conf import settings
+import razorpay
 
 
 
@@ -134,28 +138,66 @@ def add_to_cart(request, product_id):
 
 def cartItem(request):
     data_cart = CartItem.objects.all()
-    totalPrice = []
-    GST = []
-    GST_Total = []
-
-
+    totalPrice = []  #price without gst
+    GST = []  #Total gst on per item
+    GST_Total = [] #price with gst
+    Total_Qunatity = [] #Total Quantity
     for x in data_cart:
         new_price = x.product.dicount_product_price * x.quantity
+        Total_Qunatity.append(x.quantity)
         totalPrice.append(new_price)
         GST1 = (new_price /100) * 27
         GST.append(GST1)
         GST_Total.append(GST1 + new_price)
-    # print(totalPrice,'\n', GST_Total)
-
+    print(totalPrice,'\n',GST_Total,'\n',Total_Qunatity)
     data = {
         "data_cart":data_cart,
-        "totalPrice":totalPrice,
-        "GST":GST,
-        "GST_Total":GST_Total
+        "totalPrice":sum(totalPrice),
+        "GST":sum(GST),
+        "GST_Total":sum(GST_Total),
+        "Quantity":sum(Total_Qunatity)
     }
     return render(request,'stu_pannel/cart_item.html', data)
 
+def remove_cart_item(request, id):
+    cart_item = get_object_or_404(CartItem, id=id)
+    cart_item.delete()
+    return redirect('cart')
 
+#
+# razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
+#
+# def checkout(request):
+#     if request.method == "POST":
+#         # Retrieve the order amount from the form (for example, in paisa)
+#         order_amount = int(request.POST.get("order_amount"))  # Make sure to sanitize and validate input.
+#         # Create a Razorpay Order
+#         order_data = {
+#             "amount": order_amount,
+#             "currency": "INR",
+#             "payment_capture": 1,  # 1: automatic capture, 0: manual capture
+#         }
+#         order = razorpay_client.Order.create(data=order_data)
+#         # razorpay_client.
+#         return render(request, "payment/checkout.html", {"order": order})
+#     return render(request, "payment/checkout.html")
 
+def add_to_wishlist(request, id):
+    user = request.user
+    product = get_object_or_404(Product, id=id)
+    if wislist.objects.filter(user=user, product=product).exists():
+         pass
+    else:
+        wishlist_item = wislist.objects.create(user=user, product=product)
+        wishlist_item.save()
+    return redirect('cart')
 
-
+def show_wislist(request):
+    users = request.user
+    data = wislist.objects.filter(user = users)
+    dataset = {
+        "data":data,
+    }
+    return render(request, 'stu_pannel/wislist.html', dataset)
+def support(request):
+    pass

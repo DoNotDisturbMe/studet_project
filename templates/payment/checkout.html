@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+    <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <input type="hidden" name="order_amount" value="1000"> <!-- Replace '1000' with the order amount in paisa -->
+        <button type="submit">Pay Now</button>
+    </form>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "YOUR_RAZORPAY_PUBLIC_KEY", // Replace with your Razorpay public key
+            "amount": "{{ order.amount }}",
+            "currency": "INR",
+            "name": "Student Project",
+            "description": "Payment for Order",
+            "order_id": "{{ order.id }}",
+            "handler": function(response){
+                // This function will be called after payment completion
+                console.log(response);
+                // You can redirect the user to a success page or handle the order processing here
+            },
+        };
+        var rzp1 = new Razorpay(options);
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            rzp1.open();
+        });
+    </script>
+</body>
+</html>

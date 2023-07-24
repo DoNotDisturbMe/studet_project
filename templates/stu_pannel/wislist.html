@@ -1,0 +1,84 @@
+<!-- templates/cart.html -->
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+<style>
+header {
+    background-color: #2874f0;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 30px;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+
+}
+
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.wishlist-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.item-details h2 {
+    margin: 0;
+    color: #333;
+}
+
+.remove-button {
+    background-color: #ff4444;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #cc0000;
+}
+
+</style>
+
+<fieldset>
+<h1 style="margin-top: 20px; margin-bottom: 10px"></h1>
+<main id="showingcart">
+    <header>
+        <h1>My Wishlist</h1>
+    </header>
+        {% for x in data %}
+        <div class="wishlist-item">
+            <img src="{{ x.product.product_img.url }}" alt="Product 1">
+            <div class="item-details">
+                <h2>{{ x.product.product_name }}</h2>
+                <p>Product ID:{{ x.product.product_id }} </p>
+                <p>Date: {{ x.date_added }}</p>
+                <p>Price:{{ x.product.dicount_product_price }}</p>
+                <button class="remove-button">Remove</button>
+            </div>
+        </div>
+    {% endfor %}
+       <!-- Add more wishlist items here -->
+</main>
+
+{% endblock %}
+</fieldset>
