@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Product, ExtendedUser
+from .models import  Product, ExtendedUser, CartItem, Order,wislist
 
 # Register your models here.
 class AdminProduct(admin.ModelAdmin):
@@ -18,3 +18,24 @@ class AdminUser(admin.ModelAdmin):
         'district','photo_user'
     ]
 admin.site.register(ExtendedUser, AdminUser)
+
+class AdminOrder(admin.ModelAdmin):
+    list_display = [
+        'product', 'quantity', 'user','date_added'
+    ]
+admin.site.register(CartItem, AdminOrder)
+
+class AdminWislist(admin.ModelAdmin):
+    list_display = [
+        'product', 'user','date_added'
+    ]
+admin.site.register(wislist, AdminWislist)
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = [
+        'user','order_date','total_amount', 'payment_id',
+        'order_id', 'payment_signaure', 'shipping_address',
+        'mobile_no'
+    ]
+# 'product_name', 'product_id'
+admin.site.register(Order, OrderAdmin)

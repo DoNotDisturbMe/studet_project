@@ -5,14 +5,15 @@
     <h1 style="margin-top: 70px; margin-bottom: 64px"></h1>
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+    <a {% if com_done %} class="disabled" {% endif %} href="{% url 'Profile'%}">Complete/Edit Profile</a>
+{#<li{% if is_operation_done %} class="disabled"{% endif %}><a href="{% url 'operation' %}">Operation</a></li>#}
     <a href="{% url 'userprofile' request.user.id %}">Profile</a>
     <a href="{% url 'cart' %}">Cart Item</a>
     <a href="#">Order</a>
     <a href="{% url 'showwislist' %}">Wislist</a>
     <a href="">Support</a>
     <a href="#">Delete Account</a>
-{#    <a href="{% url 'Profile' x.id %}">Complete/Edit Profile</a>#}
+
 
     </div>
 

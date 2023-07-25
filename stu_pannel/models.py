@@ -29,16 +29,19 @@ class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # If you have user authentication
     date_added = models.DateTimeField(auto_now_add=True)
 
-# class Order(models.Model):
-#     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-#     order_date = models.DateTimeField(auto_now_add=True)
-#     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-#     is_paid = models.BooleanField(default=False)
-#
-#     # Add more fields as per your requirements, like shipping address, payment method, etc.
-#
-#     def __str__(self):
-#         return f"Order #{self.pk} by {self.user.username}"
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_id = models.CharField(max_length=300)
+    order_id = models.CharField(max_length=300)
+    payment_signaure = models.CharField(max_length=3000)
+    shipping_address = models.CharField(max_length=300)
+    mobile_no = models.CharField(max_length=15)
+   # # # product_download = models.FileField(upload_to="User Product")
+
+    def __str__(self):
+        return f"Order #{self.pk} by {self.user.username}"
 
 class wislist(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

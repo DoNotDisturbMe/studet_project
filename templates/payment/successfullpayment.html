@@ -1,0 +1,46 @@
+<!-- templates/cart.html -->
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+    <style>
+{#.container {#}
+{#    display: flex;#}
+{#    justify-content: center;#}
+{#    align-items: center;#}
+{#    height: 100vh;#}
+{#}#}
+{##}
+{#.success-message {#}
+{#    background-color: #fff;#}
+{#    border-radius: 5px;#}
+{#    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);#}
+{#    padding: 20px;#}
+{#    text-align: center;#}
+{#}#}
+{##}
+{#h1 {#}
+{#    color: #4CAF50;#}
+{#    font-size: 32px;#}
+{#    margin-bottom: 10px;#}
+{#}#}
+{##}
+{#p {#}
+{#    font-size: 18px;#}
+{#    margin-bottom: 5px;#}
+{#}#}
+
+    </style>
+<fieldset>
+<h1 style="margin-top: 20px; margin-bottom: 10px"></h1>
+    <div class="container">
+        <div class="success-message">
+            <h1>Payment Successful</h1>
+            <p>Thank you for your purchase.</p>
+            <p>Order ID: 123456789</p>
+            <p>Total Amount Paid: $99.99</p>
+            <p><a href="{% url 'home' %}">See you order</a></p>
+        </div>
+    </div>
+</fieldset>
+{% endblock %}

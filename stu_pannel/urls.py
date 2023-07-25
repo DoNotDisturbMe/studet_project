@@ -17,7 +17,9 @@ urlpatterns = [
     path('wislist/<int:id>', views.add_to_wishlist, name = "wislist"),
     path('showwislist', views.show_wislist, name = "showwislist"),
     #payment
-    # path('checkout/', views.checkout, name='checkout'),
+
+    path('payment/',views.payment,name="payment"),
+    path('success/',views.payment_success,name="payment-success"),
 
 #     login
     path('login', views.LoginPage, name= "login"),
@@ -26,8 +28,9 @@ urlpatterns = [
 
 
 #     UserProfile
-    path('Profile/<id>',views.userprofile_complete, name= "Profile"),
+    path('Profile',views.userprofile_complete, name= "Profile"),
     path('account/', views.UserAccount, name = "account"),
 #     Account Option
-    path('profile_view/<id>', views.userprofile_view, name = "userprofile")
+    path('profile_view/<id>', views.userprofile_view, name = "userprofile"),
+    path('update/<id>', views.edit_profile, name = 'updateprofile')
 ]

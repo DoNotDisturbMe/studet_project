@@ -5,32 +5,34 @@
 </head>
 <body>
     <h1>Checkout Page</h1>
-    <form method="post" action="{% url 'checkout' %}">
-        {% csrf_token %}
-        <input type="hidden" name="order_amount" value="1000"> <!-- Replace '1000' with the order amount in paisa -->
-        <button type="submit">Pay Now</button>
-    </form>
+    {% for x in data_item %}
+       <h1>{{ x.count }}</h1>
+        {% endfor %}
+    {% if response %}
+    <form action="/success/" method="POST">
 
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        var options = {
-            "key": "YOUR_RAZORPAY_PUBLIC_KEY", // Replace with your Razorpay public key
-            "amount": "{{ order.amount }}",
-            "currency": "INR",
-            "name": "Student Project",
-            "description": "Payment for Order",
-            "order_id": "{{ order.id }}",
-            "handler": function(response){
-                // This function will be called after payment completion
-                console.log(response);
-                // You can redirect the user to a success page or handle the order processing here
-            },
-        };
-        var rzp1 = new Razorpay(options);
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            rzp1.open();
-        });
-    </script>
+
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_MTWvtlzlyTazey"
+        data-amount={{response.amount}}
+        data-currency={{response.currency}}
+        data-order_id={{response.id}}
+        data-buttontext="Pay with Razorpay"
+        data-name="Student Project"
+        data-description=""
+        data-image=""
+        data-prefill.name={{request.user.username}}
+        data-prefill.email={{request.user.email}}
+        data-theme.color="#F37254"
+    ></script>
+    <input type="hidden" custom="Hidden Element" name="hidden">
+    </form>
+{% endif %}
+
+
+
+
+
 </body>
 </html>

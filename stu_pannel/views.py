@@ -16,11 +16,14 @@ from django.views import View
 from  django.urls import  reverse_lazy
 from django.views.generic.edit import CreateView
 from .decorators import login_required_with_autologout
-from .models import Product, ExtendedUser, CartItem, wislist
+import  os
+from .models import Product, ExtendedUser, CartItem, wislist, Order
 
 #payment
 from django.shortcuts import render
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
 import razorpay
 
 
@@ -36,6 +39,8 @@ def LoginPage(request):
             return redirect('home')
         else:
             return HttpResponse('user name and passwrod is not match...')
+            time.sleep(3)
+            return redirect('login')
     return render(request, 'login.html')
 
 
@@ -59,13 +64,9 @@ def RegisterPage(request):
     return render(request, 'signup.html')
 
 
-def userprofile_complete(request, id):
-    user_re = request.user
-    ex_user = ExtendedUser.user_id
-    if user_re == ex_user:
-        return redirect('home')
-    elif request.method== "POST":
-        user_id_v = request.user
+def userprofile_complete(request):
+    if request.method == "POST":
+        ex_user = User.objects.get(username=request.user)
         user_name_v= request.POST.get("name")
         user_mobile_v = request.POST.get('mobile')
         user_email_v = request.POST.get('email')
@@ -73,31 +74,60 @@ def userprofile_complete(request, id):
         user_pincode_v = request.POST.get('pincode')
         user_disctrict_v = request.POST.get('district')
         user_photo_v = request.FILES.get('photo')
-        print(user_id_v, user_name_v, user_mobile_v, user_email_v, user_address_v, user_pincode_v,
+        print(ex_user, user_name_v, user_mobile_v, user_email_v, user_address_v, user_pincode_v,
               user_disctrict_v, user_photo_v)
-        user_details = ExtendedUser.objects.create(user_id = user_id_v, user_name = user_name_v, Phone_number=user_mobile_v,
-                                    email= user_email_v, address= user_address_v,
-                                    pincode=user_pincode_v, district=user_disctrict_v,
-                                    photo_user=user_photo_v, )
+        user_details = ExtendedUser.objects.create(user_id = ex_user, user_name = user_name_v,
+                                    Phone_number=user_mobile_v, email= user_email_v, address= user_address_v,
+                                    pincode=user_pincode_v, district=user_disctrict_v, photo_user=user_photo_v, )
         user_details.save()
         return redirect('account')
-    else:
-        data_user = ExtendedUser.objects.filter(id = id)
-        return render(request, 'stu_pannel/userprofile_complete.html', {"data":data_user})
     return render(request, 'stu_pannel/userprofile_complete.html')
 
 
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import ExtendedUser
+
+def edit_profile(request, id):
+    ex_user = get_object_or_404(ExtendedUser, user_id=request.user)
+    ex_user1 = User.objects.get(username=request.user)
+    print("Exuser:", ex_user, '\n', "Ex-user1 :", ex_user1)
+
+    if request.method == "POST":
+        user_name_v = request.POST.get("name")
+        user_mobile_v = request.POST.get('mobile')
+        user_email_v = request.POST.get('email')
+        user_address_v = request.POST.get('address')
+        user_pincode_v = request.POST.get('pincode')
+        user_disctrict_v = request.POST.get('district')
+        user_photo_v = request.FILES.get('photo')
+
+        # Update the fields of the ex_user object
+        ex_user.user_id = ex_user1
+        ex_user.user_name = user_name_v
+        ex_user.Phone_number = user_mobile_v
+        ex_user.email = user_email_v
+        ex_user.address = user_address_v
+        ex_user.pincode = user_pincode_v
+        ex_user.district = user_disctrict_v
+        if user_photo_v:
+            ex_user.photo_user = user_photo_v
+
+        # Save the updated user object
+        ex_user.save()
+        return redirect('account')
+    return render(request, 'stu_pannel/userprofile_complete.html', {'ex_user': ex_user})
+
+
+
 def UserAccount(request):
-    return render(request, "stu_pannel/account.html")
+    is_operation_done = True
+    return render(request, "stu_pannel/account.html",{'com_done':is_operation_done})
 
 def userprofile_view(request, id):
     print(id)
     user_prfoile = ExtendedUser.objects.filter(user_id= id).order_by("-id")[:1]
     return render(request, "stu_pannel/userprofile_view.html", {'user_prfoile':user_prfoile})
-
-
-
-
 
 def home(request):
     Product_data = Product.objects.all()
@@ -137,7 +167,8 @@ def add_to_cart(request, product_id):
     return redirect('cart')  # Assuming you have a URL named 'cart' to display the cart
 
 def cartItem(request):
-    data_cart = CartItem.objects.all()
+    user = request.user
+    data_cart = CartItem.objects.filter(user = user)
     totalPrice = []  #price without gst
     GST = []  #Total gst on per item
     GST_Total = [] #price with gst
@@ -149,7 +180,7 @@ def cartItem(request):
         GST1 = (new_price /100) * 27
         GST.append(GST1)
         GST_Total.append(GST1 + new_price)
-    print(totalPrice,'\n',GST_Total,'\n',Total_Qunatity)
+    # print(totalPrice,'\n',GST_Total,'\n',Total_Qunatity)
     data = {
         "data_cart":data_cart,
         "totalPrice":sum(totalPrice),
@@ -163,24 +194,6 @@ def remove_cart_item(request, id):
     cart_item = get_object_or_404(CartItem, id=id)
     cart_item.delete()
     return redirect('cart')
-
-#
-# razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
-#
-# def checkout(request):
-#     if request.method == "POST":
-#         # Retrieve the order amount from the form (for example, in paisa)
-#         order_amount = int(request.POST.get("order_amount"))  # Make sure to sanitize and validate input.
-#         # Create a Razorpay Order
-#         order_data = {
-#             "amount": order_amount,
-#             "currency": "INR",
-#             "payment_capture": 1,  # 1: automatic capture, 0: manual capture
-#         }
-#         order = razorpay_client.Order.create(data=order_data)
-#         # razorpay_client.
-#         return render(request, "payment/checkout.html", {"order": order})
-#     return render(request, "payment/checkout.html")
 
 def add_to_wishlist(request, id):
     user = request.user
@@ -201,3 +214,86 @@ def show_wislist(request):
     return render(request, 'stu_pannel/wislist.html', dataset)
 def support(request):
     pass
+
+RAZORPAY_API_KEY = "rzp_test_MTWvtlzlyTazey"
+RAZORPAY_API_SECRET = "LTU55dGZMZdNc30Ie0i008OF"
+order_user = []
+def payment(request):
+    order_users = request.user
+    order_user.append(order_users)
+    data_cart = CartItem.objects.filter(user=request.user)
+    totalPrice = []  # price without gst
+    GST = []  # Total gst on per item
+    GST_Total = []  # price with gst
+    Total_Qunatity = []  # Total Quantity
+
+    productname = ''
+    for x in data_cart:
+        new_price = x.product.dicount_product_price * x.quantity
+        Total_Qunatity.append(x.quantity)
+        totalPrice.append(new_price)
+        GST1 = (new_price / 100) * 27
+        GST.append(GST1)
+        GST_Total.append(GST1 + new_price)
+
+        pd_name = x.product.product_name
+        productname += pd_name + ','
+
+    print(totalPrice, '\n', GST_Total, '\n', Total_Qunatity)
+
+    amount = int(sum(GST_Total)*100) #100 here means 1 dollar,1 rupree if currency INR
+    # quantity = sum(Total_Qunatity)
+    client = razorpay.Client(auth=(RAZORPAY_API_KEY, RAZORPAY_API_SECRET))
+    response = client.order.create(
+        {
+            'amount':amount,
+            'currency':'INR',
+            'payment_capture':1,
+        })
+    print(response)
+    context = {'response':response}
+    return render(request,"payment/checkout.html",context)
+
+
+@csrf_exempt
+def payment_success(request):
+    data_cart = CartItem.objects.filter(user=request.user)
+    totalPrice = []  # price without gst
+    GST = []  # Total gst on per item
+    GST_Total = []  # price with gst
+
+    for x in data_cart:
+        new_price = x.product.dicount_product_price * x.quantity
+        totalPrice.append(new_price)
+        GST1 = (new_price / 100) * 27
+        GST.append(GST1)
+        GST_Total.append(GST1 + new_price)
+
+    if request.method == "POST":
+        print(request.POST)
+        pay_id = request.POST.get('razorpay_payment_id')
+        order_idd = request.POST.get('razorpay_order_id')
+        order_signate = request.POST.get('razorpay_signature')
+
+
+        # Get the ExtendedUser instance for the current user
+        extended_user = get_object_or_404(ExtendedUser, user_id=request.user)
+
+        # Create the Order instance
+        new_order = Order.objects.create(
+            user=request.user,  # Use the ExtendedUser instance here
+            total_amount=sum(GST_Total),
+            payment_id=pay_id,
+            order_id=order_idd,
+            payment_signaure=order_signate,
+            mobile_no=extended_user.Phone_number,  # Access the attribute directly from the instance
+            shipping_address=extended_user.address,
+        )
+        new_order.save()
+        print("Data saved")
+        # Delete all cart items for the current user
+        CartItem.objects.filter(user=request.user).delete()
+        print("data delete")
+        return render(request, 'payment/successfullpayment.html')  # Replace with the correct template name
+    return HttpResponse("Method not allowed", status=405)
+

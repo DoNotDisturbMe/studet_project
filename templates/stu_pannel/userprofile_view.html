@@ -64,7 +64,7 @@
   <div id="userProfile">
     <h2>User Profile</h2>
     <div class="Profile_CE">
-        <p><a  href="{% url 'Profile' x.id %}">Complete/Edit Profile</a></p> <br>
+        <p><a  href="{% url 'updateprofile' x.user_id %}">Edit Profile</a></p> <br>
     </div>
     <div id="userDetails">
       <img id="photoUser" src="{{ x.photo_user.url }}" alt="User Photo">
