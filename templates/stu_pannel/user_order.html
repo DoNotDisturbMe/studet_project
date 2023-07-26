@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+    <style>
+.h1_1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 20px;
+}
+
+/* Table styles */
+.table1 {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.th1, .td1 {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.tr1:nth-child(even){
+    background-color: coral;
+    color: white;
+}
+.tr1:nth-child(odd){
+    background-color: darkorange;
+    color: white;
+}
+
+
+.tr1:hover {
+    background-color: #f2f2f2;
+}
+.tr1h{
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    background-color: cornflowerblue;
+}
+
+    </style>
+<fieldset>
+<h1 style="margin-top: 20px; margin-bottom: 64px"></h1>
+
+    <h4 class="h1_1">Order Details</h4>
+    <table class="table1" id="showingcart">
+        <tr class="tr1h">
+            <th class="th1">User</th>
+            <th class="th1">Order Date</th>
+            <th class="th1">Total Amount</th>
+            <th class="th1">Payment ID</th>
+            <th class="th1">Order ID</th>
+            <th class="th1">Payment Signature</th>
+            <th class="th1">Shipping Address</th>
+            <th class="th1">Mobile No</th>
+        </tr>
+        {% for order in orders %}
+        <tr class="tr1">
+            <td class="td1">{{ order.user }}</td>
+            <td class="td1">{{ order.order_date }}</td>
+            <td class="td1">{{ order.total_amount }}</td>
+            <td class="td1">{{ order.payment_id }}</td>
+            <td class="td1">{{ order.order_id }}</td>
+            <td class="td1">{{ order.payment_signature }}</td>
+            <td class="td1">{{ order.shipping_address }}</td>
+            <td class="td1">{{ order.mobile_no }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</fieldset>
+{% endblock %}
+

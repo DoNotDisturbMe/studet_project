@@ -4,43 +4,74 @@
 {% include 'stu_pannel/account.html' %}
 {% block main-content %}
     <style>
-{#.container {#}
-{#    display: flex;#}
-{#    justify-content: center;#}
-{#    align-items: center;#}
-{#    height: 100vh;#}
-{#}#}
-{##}
-{#.success-message {#}
-{#    background-color: #fff;#}
-{#    border-radius: 5px;#}
-{#    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);#}
-{#    padding: 20px;#}
-{#    text-align: center;#}
-{#}#}
-{##}
-{#h1 {#}
-{#    color: #4CAF50;#}
-{#    font-size: 32px;#}
-{#    margin-bottom: 10px;#}
-{#}#}
-{##}
-{#p {#}
-{#    font-size: 18px;#}
-{#    margin-bottom: 5px;#}
-{#}#}
+.container-5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-family: -apple-system;
+}
+
+.success-message {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+ .success_h1{
+    color: #4CAF50;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.success_p {
+    font-size: 18px;
+    margin-bottom: 5px;
+
+}
+.success_p p strong{
+    color: blue;
+}
+.success_p_p{
+    text-align: center;
+}
+
+.btn_success{
+    border: 4px solid green;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    width: 100px;
+    margin: 0 auto;
+}
+.btn_success a{
+    color: white;
+    font-family: -apple-system;
+    text-decoration: none;
+}
 
     </style>
 <fieldset>
 <h1 style="margin-top: 20px; margin-bottom: 10px"></h1>
-    <div class="container">
+    <div class="container-5">
+        {% for x in orderdata %}
         <div class="success-message">
-            <h1>Payment Successful</h1>
-            <p>Thank you for your purchase.</p>
-            <p>Order ID: 123456789</p>
-            <p>Total Amount Paid: $99.99</p>
-            <p><a href="{% url 'home' %}">See you order</a></p>
+            <div class="success_p">
+                <h1 class="success_h1">Payment Successful</h1>
+                <p>Thank you for your purchase.</p>
+                <p>Order ID: <strong>{{ x.order_id }}</strong></p>
+                <p>Payment Id: <strong>{{ x.payment_id }}</strong></p>
+                <p>Payment Date: <strong>{{ x.order_date }}</strong></p>
+                <p>Total Amount Paid: <strong>Rs {{ x.total_amount }}</strong></p>
+            </div>
+            <div>
+            <p class="btn_success button"><a href="{% url 'order_page' %}">See you order</a></p>
+                <p class="success_p_p"><strong style="color: red">NOTE:</strong> successfull payment please copy the <strong>Payment Id</strong> and go in support section and fill <br> the details regarding the project and paste the
+            Payment id after the 5 Min verification you can download the your project.<br> Thank you for your purchase. </p> </div>
         </div>
+        {% endfor %}
     </div>
 </fieldset>
 {% endblock %}

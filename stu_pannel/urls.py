@@ -16,10 +16,12 @@ urlpatterns = [
     path('remove/<int:id>', views.remove_cart_item, name = "remove"),
     path('wislist/<int:id>', views.add_to_wishlist, name = "wislist"),
     path('showwislist', views.show_wislist, name = "showwislist"),
+    path('support', views.support, name = "support"),
     #payment
 
     path('payment/',views.payment,name="payment"),
     path('success/',views.payment_success,name="payment-success"),
+    path('order-page/', views.user_oderview, name='order_page'),
 
 #     login
     path('login', views.LoginPage, name= "login"),

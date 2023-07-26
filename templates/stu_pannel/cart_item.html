@@ -29,8 +29,11 @@
             <h2>Cart Summary</h2>
             <p>Total Items: {{ Quantity }}</p>
             <p>Total Price: {{ GST_Total }} Rs-/</p>
+            {% if GST_Total > 0 %}
             <button class="checkout-button"><a href="{% url 'payment' %}" class="checkout-button">Proceed to Checkout </a></button>
-{#            <p class="checkout-button"> <a href="{% url 'checkout' %}" class="checkout-button"></a></p>#}
+            {% elif GST_Total < 1 %}
+            <button disabled class="checkout-button"><a href="{% url 'payment' %}" class="checkout-button">Proceed to Checkout </a></button>
+            {% endif %}
         </section>
 </main>
 

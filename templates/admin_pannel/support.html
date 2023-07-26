@@ -1,5 +1,6 @@
 {% load static %}
 {% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
 {% block main-content %}
 <style>
 
@@ -8,10 +9,13 @@ header {
     color: #fff;
     text-align: center;
     padding: 10px;
+    width: 20%;
+    margin: 0 auto;
 }
 
 h1 {
     margin: 0;
+    font-size: 20px;
 }
 
 main {
@@ -56,9 +60,9 @@ button:hover {
 
 </style>
 <fieldset>
-<h1 style="margin-top: 70px; margin-bottom: 64px"></h1>
+<h1 style="margin-top:20px; margin-bottom: 10px"></h1>
     <header>
-        <h1>Support Form</h1>
+        <h1>Support</h1>
     </header>
     <main>
         <form action="#" method="post">
@@ -76,15 +80,15 @@ button:hover {
             </div>
             <div class="form-group">
                 <label for="product_id">Product ID:</label>
-                <input type="text" id="product_id" name="product_id" required>
+                <input type="text" id="product_id" name="product_id" placeholder="product id must be correct" required>
             </div>
             <div class="form-group">
-                <label for="product_date">Product Date:</label>
-                <input type="date" id="product_date" name="product_date" required>
+                <label for="product_date">Purchase Date:</label>
+                <input type="date" id="product_date" name="product_date" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="upi_id">UPI ID:</label>
-                <input type="text" id="upi_id" name="upi_id" required>
+                <input type="text" id="upi_id" name="upi_id" placeholder="upi payment id must be correct" required>
             </div>
             <button type="submit">Submit</button>
         </form>

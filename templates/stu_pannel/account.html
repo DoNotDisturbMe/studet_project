@@ -9,9 +9,9 @@
 {#<li{% if is_operation_done %} class="disabled"{% endif %}><a href="{% url 'operation' %}">Operation</a></li>#}
     <a href="{% url 'userprofile' request.user.id %}">Profile</a>
     <a href="{% url 'cart' %}">Cart Item</a>
-    <a href="#">Order</a>
+    <a href="{% url 'order_page' %}">Order</a>
     <a href="{% url 'showwislist' %}">Wislist</a>
-    <a href="">Support</a>
+    <a href="{% url 'support' %}">Support</a>
     <a href="#">Delete Account</a>
 
 

@@ -38,6 +38,7 @@ class Order(models.Model):
     payment_signaure = models.CharField(max_length=3000)
     shipping_address = models.CharField(max_length=300)
     mobile_no = models.CharField(max_length=15)
+
    # # # product_download = models.FileField(upload_to="User Product")
 
     def __str__(self):

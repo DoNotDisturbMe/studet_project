@@ -215,8 +215,7 @@ def show_wislist(request):
 def support(request):
     pass
 
-RAZORPAY_API_KEY = "rzp_test_MTWvtlzlyTazey"
-RAZORPAY_API_SECRET = "LTU55dGZMZdNc30Ie0i008OF"
+
 order_user = []
 def payment(request):
     order_users = request.user
@@ -293,7 +292,23 @@ def payment_success(request):
         print("Data saved")
         # Delete all cart items for the current user
         CartItem.objects.filter(user=request.user).delete()
-        print("data delete")
-        return render(request, 'payment/successfullpayment.html')  # Replace with the correct template name
+        order_data = Order.objects.filter(user_id=request.user).order_by("-id")[:1]
+        data = {
+            'orderdata':order_data
+        }
+        return render(request, 'payment/successfullpayment.html', data)  # Replace with the correct template name
     return HttpResponse("Method not allowed", status=405)
+
+def user_oderview(request):
+    order_data = Order.objects.filter(user_id=request.user).order_by("-id")[:5]
+    data = {
+        'orders':order_data
+    }
+    return render(request, 'stu_pannel/user_order.html', data)
+
+
+
+
+def support(request):
+    return  render(request, 'admin_pannel/support.html')
 
