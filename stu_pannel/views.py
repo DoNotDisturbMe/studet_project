@@ -304,8 +304,7 @@ def show_wislist(request):
         return render(request, 'stu_pannel/error.html', {'error_message': str(e)})
 
 
-RAZORPAY_API_KEY = "rzp_test_MTWvtlzlyTazey"
-RAZORPAY_API_SECRET = "LTU55dGZMZdNc30Ie0i008OF"
+
 order_user = []
 @login_required(login_url='/login')
 def payment(request):
