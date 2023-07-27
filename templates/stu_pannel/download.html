@@ -1,0 +1,54 @@
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+<style>
+.container11 {
+    max-width: 600px;
+    margin: 0px auto 100px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container11 a{
+    margin: 0 auto;
+}
+
+.h11 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.p11 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.download-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<fieldset>
+<h1 style="margin-top:20px; margin-bottom: 10px"></h1>
+    <div class="container11">
+        <h1 class="h11">Download Your Digital Product</h1>
+    {% for x in product_dow %}
+        <p class="p11">Product Name:{{ x.product_name }}</p>
+        <p class="p11">Product ID: {{ x.product_id }}</p>
+        <p class="p11">Product Price: {{ x.product_price }}</p>
+        <a href="{{ x.product_file.url }}" download class="download-button">Download</a>
+    {% endfor %}
+    </div>
+</fieldset>
+{% endblock %}

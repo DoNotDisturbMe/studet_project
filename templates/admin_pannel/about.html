@@ -1,50 +1,98 @@
 {% load static %}
 {% include 'bash.html' %}
 {% block main-content %}
+    <style>
+    header {
+    /* Add header styles here */
+}
+
+main {
+    padding: 20px;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-info {
+    width: 45%;
+}
+
+.about-info h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.about-info p {
+    margin-bottom: 10px;
+}
+
+.about-image {
+    width: 40%;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 5px;
+}
+    </style>
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
 
-<div class="image about-section-img">
-    <img class="" src="{% static 'admin_pannel/img/about.jpg' %}">
-</div>
-<div class="info-box about-section">
-<p class="about-text">Our organization offers a wide range of projects specifically designed for Computer Science (CS) and Information
-Technology (IT) students. These projects cover various domains such as web development, mobile app development, data
-science, artificial intelligence, machine learning, cybersecurity, and networking. <br>
 
-We provide customizable projects that can be tailored to meet the specific requirements and skill levels of individual
-students. Whether students are beginners, intermediate learners, or advanced programmers, we have projects suitable for
-their needs. <br>
 
-Each project is designed to provide practical hands-on experience and enhance students' knowledge and skills in their
-chosen field. We focus on real-world applications and industry-relevant technologies to ensure educational value.
-<br>
-Our project catalog includes diverse categories such as e-commerce systems, content management systems, social networking
-platforms, data analysis tools, game development, automation solutions, and more. Students have the opportunity to work on
-projects that interest them and align with their career goals.
-<br>
-Collaboration is encouraged among students, allowing them to work in teams and learn how to effectively manage a group project.
-This enhances their teamwork and communication skills, which are valuable in the workplace.
-<br>
-We provide comprehensive project documentation, including project requirements, design guidelines, and coding standards. Additionally,
-our team offers technical support to address any queries or challenges that students may encounter during the project. <br>
+    <main>
+        <section class="about-section">
+            <div class="about-info">
+                <h1>About Us</h1>
+                <p class="" style="text-align: justify; margin-bottom: 30px">Our organization offers a wide range of projects specifically designed for Computer Science (CS) and Information
+                    Technology (IT) students. These projects cover various domains such as web development, mobile app development, data
+                    science, artificial intelligence, machine learning, cybersecurity, and networking. <br>
 
-Practical implementation is emphasized in our projects, utilizing industry-standard tools, frameworks, and programming languages.
-This prepares students for real-world scenarios and enhances their employability. <br>
+                    We provide customizable projects that can be tailored to meet the specific requirements and skill levels of individual
+                    students. Whether students are beginners, intermediate learners, or advanced programmers, we have projects suitable for
+                    their needs. <br>
 
-Supplementary learning resources, including tutorials, sample code snippets, and reference materials,
-are provided to assist students in understanding project concepts and technologies. <br>
+                    Each project is designed to provide practical hands-on experience and enhance students' knowledge and skills in their
+                    chosen field. We focus on real-world applications and industry-relevant technologies to ensure educational value.
+                    <br>
+                    Our project catalog includes diverse categories such as e-commerce systems, content management systems, social networking
+                    platforms, data analysis tools, game development, automation solutions, and more. Students have the opportunity to work on
+                    projects that interest them and align with their career goals.
+                    <br>
+                    Collaboration is encouraged among students, allowing them to work in teams and learn how to effectively manage a group project.
+                    This enhances their teamwork and communication skills, which are valuable in the workplace.
+                    <br>
+                    We provide comprehensive project documentation, including project requirements, design guidelines, and coding standards. Additionally,
+                    our team offers technical support to address any queries or challenges that students may encounter during the project. <br>
 
-We offer guidance on project evaluation, including milestones, checkpoints, and feedback mechanisms, to ensure students receive
-constructive feedback to improve their project development skills. <br>
+                    Practical implementation is emphasized in our projects, utilizing industry-standard tools, frameworks, and programming languages.
+                    This prepares students for real-world scenarios and enhances their employability. <br>
 
-Engaging in our projects helps students gain valuable experience and showcase their skills to potential employers.
-Completing a project demonstrates their ability to deliver high-quality software solutions, contributing to their
-professional growth. <br>
+                    Supplementary learning resources, including tutorials, sample code snippets, and reference materials,
+                    are provided to assist students in understanding project concepts and technologies. <br>
 
-Our organization aims to empower CS/IT students by offering a diverse range of projects that foster practical learning,
-promote collaboration, and prepare them for successful careers in the field of technology. We encourage continuous learning
-    and exploration of new technologies even after project completion to stay updated with industry trends.  </p>
-</div>
+                    We offer guidance on project evaluation, including milestones, checkpoints, and feedback mechanisms, to ensure students receive
+                    constructive feedback to improve their project development skills. <br>
+
+                    Engaging in our projects helps students gain valuable experience and showcase their skills to potential employers.
+                    Completing a project demonstrates their ability to deliver high-quality software solutions, contributing to their
+                    professional growth. <br>
+
+                    Our organization aims to empower CS/IT students by offering a diverse range of projects that foster practical learning,
+                    promote collaboration, and prepare them for successful careers in the field of technology. We encourage continuous learning
+                        and exploration of new technologies even after project completion to stay updated with industry trends.  </p>
+            </div>
+            <div class="about-image">
+                <img class="" src="{% static 'icons8-project-color-96.png' %}">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Add the footer content here -->
+    </footer>
 </fieldset>
 {% endblock %}

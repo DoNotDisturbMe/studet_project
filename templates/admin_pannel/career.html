@@ -1,10 +1,84 @@
 {% load static %}
 {% include 'bash.html' %}
 {% block main-content %}
+<style>
+
+main {
+    padding: 20px;
+}
+
+.job-section {
+    text-align: center;
+}
+
+.job-section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.job-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.job-item h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.job-item p {
+    margin-bottom: 5px;
+}
+
+.job-item a {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.job-item a:hover {
+    background-color: #0056b3;
+}
+
+</style>
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
-    <div style="align-items: center;  margin:0px 20% 0% 20%;">
-        <img src="{% static 'admin_pannel/css/long-time-no-post.jpg' %}">
-    </div>
+<main>
+        <section class="job-section">
+            <h1>Job Openings</h1>
+            <div class="job-list">
+                <div class="job-item">
+                    <h2>Job Title 1</h2>
+                    <p>Department: XYZ</p>
+                    <p>Location: ABC</p>
+                    <p>Posted on: July 27, 2023</p>
+                    <a href="#">Apply Now</a>
+                </div>
+                <div class="job-item">
+                    <h2>Job Title 2</h2>
+                    <p>Department: XYZ</p>
+                    <p>Location: ABC</p>
+                    <p>Posted on: July 27, 2023</p>
+                    <a href="#">Apply Now</a>
+                </div>
+                <!-- Add more job items here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Add the footer content here -->
+    </footer>
 </fieldset>
 {% endblock %}

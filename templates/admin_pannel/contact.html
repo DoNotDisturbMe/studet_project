@@ -1,34 +1,131 @@
 {% load static %}
 {% include 'bash.html' %}
 {% block main-content %}
+<style>
+header {
+    /* Add header styles here */
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contact-info {
+    width: 40%;
+}
+
+.contact-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    margin-bottom: 5px;
+}
+
+.contact-form {
+    width: 55%;
+}
+
+.contact-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add footer styles here */
+
+</style>
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
-<map>
-    <p href="https://goo.gl/maps/LSt3HskfkVEwjRLg8"> Address </p>
-</map>
-<div class="contact-phone">
-    <p class="grid-item">By Phone <br>
-        (Monady to Friday, 9am to 6pm IST) <br>
-        xyz pvt ltd<br>
-        Contact No:  +91 x x x x x x x x x <br>
-        International : <br>
-        1-604-637-0780
+<main>
+        <section class="contact-section">
+            <div class="contact-info">
+                <h1>Contact Us</h1>
+                <p>Email: kmprice15932@gmail.com</p>
+                <p>Phone: +91 17896325</p>
+                <p>Address: BBSBEC, Punjab, India</p>
+            </div>
+            <div class="contact-form">
+                <h2>Get in Touch</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
 
-    </p>
-    <p class="grid-item">Social Media. <br>
-        <a href="@__up57"><i class="fa-instagram">@ __Up57</i>
-        <br>
-        (Monady to Friday, 9am to 6pm IST) <br>
-        xyz pvt ltd<br>
-        Contact No:  +91 x x x x x x x x x <br>
-        International : <br>
-        1-604-637-0780</a>
-    </p>
-    <p class="grid-item">By Email <br>
-       <a style="text-decoration: none; color: white" href="mailto:kmprince15932@gmail.com">kmprince15932@gmail.com</a></p>
-</footer>
-    </p>
-</div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Add the footer content here -->
+    </footer>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // Replace the latitude and longitude below with the location you want to display on the map
+            var myLatLng = { lat: 37.7749, lng: -122.4194 };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                zoom: 14 // Adjust the zoom level as needed
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Your Marker Title' // Replace with your preferred title
+            });
+        }
+    </script>
+
+
+
+
+
 
 </fieldset>
 {% endblock %}
+

@@ -110,7 +110,7 @@ button[type="submit"]:hover {
     <label for="id_password1">Password:</label>
    <input id="pass1"  minlength="8"  class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass1" type="password" required stroke="*" >
     <br>
-{#pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"#}
+
     <label for="id_password2">Confirm Password:</label>
     <input id="pass1"  minlength="8" class="input-group-text fc-color-picker text-gray kb form-control-color" name="form_pass2" type="password" required stroke="*" >
     <br>
@@ -120,8 +120,8 @@ button[type="submit"]:hover {
         <ul>
         <li style="" class="v_1"> Password must contain at least </li>
         <li class="v_2"> One digit. </li>
-        <li class="v_3"> One lowercase letter. </li>
-        <li class="v_4"> One uppercase letter. </li>
+        <li class="v_3"> One letter. </li>
+        <li class="v_4"> One special symbol. </li>
         <li class="v_5"> Password should be 8 character long.</li>
         </ul>
     </div>

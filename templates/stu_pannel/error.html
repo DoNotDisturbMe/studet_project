@@ -1,0 +1,11 @@
+<!-- templates/cart.html -->
+{% load static %}
+{% include 'bash.html' %}
+{% include 'stu_pannel/account.html' %}
+{% block main-content %}
+<fieldset>
+<h1 style="margin-top: 20px; margin-bottom: 10px"></h1>
+    <h1>Error</h1>
+    <p>{{ error_message }}</p>
+</fieldset>
+{% endblock %}

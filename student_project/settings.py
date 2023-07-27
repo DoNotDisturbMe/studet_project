@@ -130,3 +130,5 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+RAZORPAY_API_KEY = "rzp_test_MTWvtlzlyTazey"
+RAZORPAY_API_SECRET = "LTU55dGZMZdNc30Ie0i008OF"

@@ -64,14 +64,15 @@
                 <p>Order ID: <strong>{{ x.order_id }}</strong></p>
                 <p>Payment Id: <strong>{{ x.payment_id }}</strong></p>
                 <p>Payment Date: <strong>{{ x.order_date }}</strong></p>
-                <p>Total Amount Paid: <strong>Rs {{ x.total_amount }}</strong></p>
+                <p>Total Amount Paid: <strong>Rs {{ x.total_amount }}</strong></p> {% endfor %}
+
             </div>
-            <div>
+        <div>
             <p class="btn_success button"><a href="{% url 'order_page' %}">See you order</a></p>
-                <p class="success_p_p"><strong style="color: red">NOTE:</strong> successfull payment please copy the <strong>Payment Id</strong> and go in support section and fill <br> the details regarding the project and paste the
-            Payment id after the 5 Min verification you can download the your project.<br> Thank you for your purchase. </p> </div>
+                <p class="success_p_p"><strong style="color: red">NOTE:</strong> After successfull payment please copy the <strong>Payment ID and Product ID </strong> from home page innside details button and go in support section and fill <br> the details regarding the project and paste the
+            Payment ID and Product ID after the 5 Min verification you can download the your project.<br> Thank you for your purchase. </p> </div>
         </div>
-        {% endfor %}
+
     </div>
 </fieldset>
 {% endblock %}

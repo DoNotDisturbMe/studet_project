@@ -17,6 +17,7 @@ urlpatterns = [
     path('wislist/<int:id>', views.add_to_wishlist, name = "wislist"),
     path('showwislist', views.show_wislist, name = "showwislist"),
     path('support', views.support, name = "support"),
+    path('download',views.download, name="download"),
     #payment
 
     path('payment/',views.payment,name="payment"),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('login', views.LoginPage, name= "login"),
     path('signup', views.RegisterPage, name= "signup"),
     path('logout/', views.LogoutPage, name='logout'),
+    path('deleteaccount', views.deleteAccount, name="delaccount"),
 
 
 #     UserProfile

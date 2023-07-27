@@ -66,6 +66,7 @@ button:hover {
     </header>
     <main>
         <form action="#" method="post">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -87,10 +88,10 @@ button:hover {
                 <input type="date" id="product_date" name="product_date" placeholder="" required>
             </div>
             <div class="form-group">
-                <label for="upi_id">UPI ID:</label>
+                <label for="upi_id">UPI Payment ID:</label>
                 <input type="text" id="upi_id" name="upi_id" placeholder="upi payment id must be correct" required>
             </div>
-            <button type="submit">Submit</button>
+            <button style="margin-bottom: 40px" type="submit">Submit</button>
         </form>
     </main>
 </fieldset>

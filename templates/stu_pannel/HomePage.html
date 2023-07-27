@@ -4,762 +4,806 @@
 {% block main-content %}
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
+         {% csrf_token %}
+{#    {% if messages %}#}
+{#    <ul class="messages">#}
+{#        {% for message in messages %}#}
+{#            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endif %}#}
+{#    {% for x in Product_data %}#}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{{ x.product_img.url }}">#}
+{#            <p>#}
+{#                <h6>{{ x.product_name }}</h6>#}
+{#                <p>Making Year: {{ x.Product_building_year.year }} </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : {{ x.Product_programingi_language }} <br> <strong style="color: red"> Price:  Rs/ {{ x.product_price }} </strong> <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="{% url "pdetails" x.id %}">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#            <button class="btn-block btn3"><a href="{% url "wislist" x.id %}">Wislist</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#<div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#<div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#    </div><div class=" card-body card_contrainer">#}
+{#        <div class="card-columns photo">#}
+{#            <img src="{% static 'icons8-project-color-96.png' %}">#}
+{#            <p>#}
+{#                <h6>Car showroom management</h6>#}
+{#                <p>Making Year: 2020 </p>#}
+{#            </p>#}
+{#        </div> <br>#}
+{#        <div class="all_button">#}
+{#            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>#}
+{#            <button class="btn-block btn1 "><a href="#">Details</a></button><br>#}
+{#            <button class="btn-block btn2"><a href="#">Buy</a></button>#}
+{#        </div>#}
+{#</div>#}
     {% for x in Product_data %}
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{{ x.product_img.url }}">
-            <p>
-                <h6>{{ x.product_name }}</h6>
-                <p>Making Year: {{ x.Product_building_year.year }} </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : {{ x.Product_programingi_language }} <br> <strong style="color: red"> Price:  Rs/ {{ x.product_price }} </strong> <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="{% url "pdetails" x.id %}">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-            <button class="btn-block btn3"><a href="{% url "wislist" x.id %}">Wislist</a></button>
-        </div>
-    </div>
-    {% endfor %}
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-
-        </div>
-    </div>
-
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-    <div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-<div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div>
-
-
-<div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-    </div><div class=" card-body card_contrainer">
-        <div class="card-columns photo">
-            <img src="{% static 'icons8-project-color-96.png' %}">
-            <p>
-                <h6>Car showroom management</h6>
-                <p>Making Year: 2020 </p>
-            </p>
-        </div> <br>
-        <div class="all_button">
-            <p><br> Based on : Python + Django <br> Prince: Rs/ 3000 <br> <b>Note: None Returnable </b> </p>
-            <button class="btn-block btn1 "><a href="#">Details</a></button><br>
-            <button class="btn-block btn2"><a href="#">Buy</a></button>
-        </div>
-</div>
-
-
-
+	<div class="product-card22">
+        <div class="badge22">Hot</div>
+		<div class="product-tumb22">
+			<img src="{{ x.product_img.url }}" alt="">
+		</div>
+		<div class="product-details22">
+			<span class="product-catagory22">Student Project</span>
+			<h4><a href="">{{ x.product_name }}</a></h4>
+			<p>{{ x.product_summery }}</p>
+			<div class="product-bottom-details22">
+				<div class="product-price22"><small>Rs. {{ x.product_price }}</small>Rs. {{ x.dicount_product_price }}</div>
+				<div class="product-links22">
+					<a href="{% url "wislist" x.id %} "><i class="fa fa-heart"></i></a>
+                    <a href="{% url "pdetails" x.id %} "><i class="fa fa-minus"></i></a>
+                    <a href="{% url "add_to_cart" x.id %}"><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+<div class="product-card22">
+        <div class="badge22">Hot</div>
+		<div class="product-tumb22">
+			<img src="{% static "icons8-project-color-96.png" %}" alt="">
+		</div>
+		<div class="product-details22">
+			<span class="product-catagory22">Student Project</span>
+			<h4><a href="">xfgyhiojhbjk</a></h4>
+			<p>xfghjkxcvbjlklcyguihoj</p>
+			<div class="product-bottom-details22">
+				<div class="product-price22"><small>kjhgfojiugfcx</small>Rs. k;ljbhvgcjkbh</div>
+				<div class="product-links22">
+					<a href=""><i class="fa fa-heart"></i></a>
+                    <a href=""><i class="fa fa-minus"></i></a>
+                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
 </fieldset>
-
 {% endblock %}
 {% include 'footer.html' %}
 {# Maring#}

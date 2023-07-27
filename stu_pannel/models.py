@@ -22,6 +22,7 @@ class Product(models.Model):
     product_summery = models.CharField(max_length=10000)
     product_price = models.IntegerField()
     dicount_product_price = models.IntegerField()
+    product_file = models.FileField(upload_to='product_data/')
 
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -49,12 +50,20 @@ class wislist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # If you have user authentication
     date_added = models.DateTimeField(auto_now_add=True)
 
-#
-# class support(models.Model):
-#     user_details = models.ForeignKey(ExtendedUser, on_delete=models.CASCADE)
-#     product_details = models.ForeignKey(Product, on_delete=models.CASCADE)
-#     payment =
-#
+
+class SupportUser(models.Model):
+    user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    support_uname = models.CharField(max_length=600)
+    support_umno= models.IntegerField()
+    support_uemail = models.CharField(max_length=200)
+    support_proid = models.CharField(max_length=600)
+    support_uprodate= models.CharField(max_length=300)
+    support_uupid = models.CharField(max_length=6000)
+    support_totalpayment = models.IntegerField()
+
+
+
+
 
 
 

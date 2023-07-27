@@ -64,6 +64,17 @@ button[type="submit"]:hover {
     width: 50px;
     height: 30px;
 }
+
+.messages{
+    background-color: red;
+    color: white;
+    border: 3px solid cornflowerblue;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-block: cornflowerblue;
+    text-align: center;
+
+}
     </style>
 
 <!-- login.html -->
@@ -76,13 +87,13 @@ button[type="submit"]:hover {
     <label for="id_password">Password:</label>
     <input class="input-group-text fc-color-picker text-gray kb form-control-color" type="password" required stroke="*"  name="pass">
     <br>
-  {% if error_messages %}
-    <ul class="errorlist">
-      {% for message in error_messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
+ {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
     </ul>
-  {% endif %}
+{% endif %}
   <button type="submit">Log In</button>
     <p class="loginpage_in_register" >I am a new user ! <br> <a href="{% url "signup" %}"> Signup </a> </p>
 </form>

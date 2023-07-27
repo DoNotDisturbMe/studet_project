@@ -12,14 +12,20 @@
     <a href="{% url 'order_page' %}">Order</a>
     <a href="{% url 'showwislist' %}">Wislist</a>
     <a href="{% url 'support' %}">Support</a>
-    <a href="#">Delete Account</a>
-
-
+    <a href="{% url 'download' %}">Download</a>
+    <a href="{% url 'delaccount' %}">Delete Account</a>
     </div>
-
     <div id="main">
     <span style="font-size:30px;cursor:pointer; margin-top: 0px" onclick="openNav()">Open &#9776; </span>
-
+        <div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
     </fieldset>
     {% endblock %}

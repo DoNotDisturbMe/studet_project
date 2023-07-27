@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import  Product, ExtendedUser, CartItem, Order,wislist
+from .models import  Product, ExtendedUser, CartItem, Order,wislist,SupportUser
 
 # Register your models here.
 class AdminProduct(admin.ModelAdmin):
     list_display =  [
         "product_id", "product_img", "product_name",
         "Product_building_year", "Product_programingi_language",
-        "product_summery"
+        "product_summery", "product_file"
     ]
 admin.site.register(Product, AdminProduct)
 
@@ -39,3 +39,13 @@ class OrderAdmin(admin.ModelAdmin):
     ]
 # 'product_name', 'product_id'
 admin.site.register(Order, OrderAdmin)
+
+class AdminSupportuser(admin.ModelAdmin):
+    list_display = [
+        'user_name', 'support_uname', 'support_umno',
+        'support_uemail', 'support_proid', 'support_uprodate',
+        'support_uupid', 'support_totalpayment'
+    ]
+admin.site.register(SupportUser, AdminSupportuser)
+
+
