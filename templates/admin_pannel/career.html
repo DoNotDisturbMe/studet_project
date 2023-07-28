@@ -51,34 +51,48 @@ main {
     background-color: #0056b3;
 }
 
+.messages{
+    background-color: red;
+    color: white;
+    border: 3px solid cornflowerblue;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-block: cornflowerblue;
+    text-align: center;
+
+}
 </style>
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
 <main>
-        <section class="job-section">
+ {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <section class="job-section">
             <h1>Job Openings</h1>
             <div class="job-list">
+                {%  for x in cree_data %}
                 <div class="job-item">
-                    <h2>Job Title 1</h2>
-                    <p>Department: XYZ</p>
-                    <p>Location: ABC</p>
-                    <p>Posted on: July 27, 2023</p>
-                    <a href="#">Apply Now</a>
+                    <input hidden="" type="text" name="job_title" value="{{ x.job_title }}">
+                    <h2>{{ x.job_title }}</h2>
+                    <p>Department: IT</p>
+                    <p>Location: {{ x.job_location }}</p>
+                    <p>Posted on: {{ x.job_post_date.date }}</p>
+                    <p>Skill: {{ x.skills_set }}</p>
+                    Upload Resume: <input type="file" name="reusme">
+                    <button><a type="submit">Apply Now</a></button>
                 </div>
-                <div class="job-item">
-                    <h2>Job Title 2</h2>
-                    <p>Department: XYZ</p>
-                    <p>Location: ABC</p>
-                    <p>Posted on: July 27, 2023</p>
-                    <a href="#">Apply Now</a>
-                </div>
-                <!-- Add more job items here -->
+                {%  endfor %}
+{#                job items here -->#}
             </div>
         </section>
     </main>
-
-    <footer>
-        <!-- Add the footer content here -->
-    </footer>
+</form>
 </fieldset>
 {% endblock %}

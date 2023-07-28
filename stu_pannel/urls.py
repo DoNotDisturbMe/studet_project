@@ -15,6 +15,7 @@ urlpatterns = [
     path('cart', views.cartItem, name = "cart"),
     path('remove/<int:id>', views.remove_cart_item, name = "remove"),
     path('wislist/<int:id>', views.add_to_wishlist, name = "wislist"),
+    path('rmwislist/<int:id>', views.remove_to_wislist, name = "removewislist"),
     path('showwislist', views.show_wislist, name = "showwislist"),
     path('support', views.support, name = "support"),
     path('download',views.download, name="download"),
@@ -38,3 +39,5 @@ urlpatterns = [
     path('profile_view/<id>', views.userprofile_view, name = "userprofile"),
     path('update/<id>', views.edit_profile, name = 'updateprofile')
 ]
+
+# --------------------------------------------------------------------------- Admin Urls

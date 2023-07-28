@@ -53,3 +53,15 @@
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+
+.messages{
+    background-color: green;
+    color: white;
+    border: 3px solid cornflowerblue;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-block: cornflowerblue;
+    text-align: center;
+
+}

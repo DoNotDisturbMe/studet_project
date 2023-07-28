@@ -73,8 +73,8 @@ main {
                 <p>Product ID:{{ x.product.product_id }} </p>
                 <p>Date: {{ x.date_added }}</p>
                 <p>Price:{{ x.product.dicount_product_price }}</p>
-                <button class="remove-button">Remove</button>
-            </div>
+                <p class="remove-button"> <a style="text-decoration: none; color: white" href="{% url 'removewislist' x.id %}">Remove</a></p>
+                </div>
         </div>
     {% endfor %}
        <!-- Add more wishlist items here -->

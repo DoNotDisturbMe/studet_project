@@ -1,0 +1,36 @@
+    {% load static %}
+    {% include 'admin_pannel/bash.html' %}
+    {% block main-content %}
+    <fieldset>
+    <h1 style="margin-top: 70px; margin-bottom: 64px"></h1>
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a {% if com_done %} class="disabled" {% endif %} href="{% url 'Profile'%}">Complete/Edit Profile</a>
+{#<li{% if is_operation_done %} class="disabled"{% endif %}><a href="{% url 'operation' %}">Operation</a></li>#}
+    <a href="{% url 'userprofile' request.user.id %}">Profile</a>
+    <a href="{% url 'cart' %}">Cart Item</a>
+    <a href="{% url 'order_page' %}">Order</a>
+    <a href="{% url 'showwislist' %}">Wislist</a>
+    <a href="{% url 'support' %}">Support</a>
+    <a href="{% url 'download' %}">Download</a>
+    <a href="{% url 'delaccount' %}">Delete Account</a>
+    </div>
+    <div id="main">
+    <span style="font-size:30px;cursor:pointer; margin-top: 0px" onclick="openNav()">Open &#9776; </span>
+        <div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    </fieldset>
+    {% endblock %}
+
+
+
+
+

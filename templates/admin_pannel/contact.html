@@ -68,11 +68,29 @@ main {
     cursor: pointer;
 }
 
+
+.messages{
+    background-color: green;
+    color: white;
+    border: 3px solid cornflowerblue;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-block: cornflowerblue;
+    text-align: center;
+
+}
 /* Add footer styles here */
 
 </style>
 <fieldset>
 <h1 style="margin-top: 64px; margin-bottom: 64px"></h1>
+     {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <main>
         <section class="contact-section">
             <div class="contact-info">
@@ -82,8 +100,10 @@ main {
                 <p>Address: BBSBEC, Punjab, India</p>
             </div>
             <div class="contact-form">
+
                 <h2>Get in Touch</h2>
-                <form>
+                <form class="" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
 
@@ -96,6 +116,7 @@ main {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+
         </section>
     </main>
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Product, ExtendedUser, CartItem, Order,wislist,SupportUser
+from .models import  Product, ExtendedUser, CartItem, Order,wislist,SupportUser,Careers, Contact, CareersSaveData, About
 
 # Register your models here.
 class AdminProduct(admin.ModelAdmin):
@@ -48,4 +48,31 @@ class AdminSupportuser(admin.ModelAdmin):
     ]
 admin.site.register(SupportUser, AdminSupportuser)
 
+class CareerAdmin(admin.ModelAdmin):
+    list_display = [
+        'job_title', 'job_location', 'job_post_date',
+        'skills_set'
+    ]
+admin.site.register(Careers, CareerAdmin)
+
+class CareersSaveDataAdmin(admin.ModelAdmin):
+    list_display = [
+        'job_tile', 'resume_upload'
+    ]
+admin.site.register(CareersSaveData, CareersSaveDataAdmin)
+
+class ContactAdmin(admin.ModelAdmin):
+    meta = Careers
+    list_display =[
+        'person_name', 'person_email', 'person_message'
+    ]
+admin.site.register(Contact, ContactAdmin)
+
+
+class AboutAdmin(admin.ModelAdmin):
+    list_display = [
+        'about_message'
+
+    ]
+admin.site.register(About, AboutAdmin)
 

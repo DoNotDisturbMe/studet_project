@@ -1,23 +1,12 @@
-import datetime
-import socketserver
-import time
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.cache import never_cache
-
 from django.http import HttpResponseRedirect, HttpResponse, request, JsonResponse
-from  django.shortcuts import redirect, get_object_or_404
+
 # Authentication System Module
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 #
 from django.contrib import messages
-from django.urls import reverse
-from django.views import View
-from  django.urls import  reverse_lazy
-from django.views.generic.edit import CreateView
-from .decorators import login_required_with_autologout
-import  os
-from .models import Product, ExtendedUser, CartItem, wislist, Order, SupportUser
+from .models import Product, ExtendedUser, CartItem, wislist, Order, SupportUser, Careers, CareersSaveData, Contact, About
 from django.db import transaction
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Order, SupportUser
@@ -25,7 +14,6 @@ from django.db import IntegrityError
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import ExtendedUser
-
 import re
 #payment
 from django.shortcuts import render
@@ -33,11 +21,9 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseBadRequest
 import razorpay
-
-
-
-
 import re
+from django.contrib.auth.decorators import user_passes_test
+
 
 def RegisterPage(request):
     if request.method == "POST":
@@ -45,12 +31,21 @@ def RegisterPage(request):
         user_pass1 = request.POST.get('form_pass1')
         user_pass2 = request.POST.get('form_pass2')
         print(user_from, user_pass2, user_pass1)
+
         # Password Requirement Regular Expression
         password_pattern = r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
-        if user_pass1 != user_pass2:
+
+        # Username Requirement Regular Expression
+        username_pattern = r"^[A-Za-z]+$"
+
+        if not re.match(username_pattern, user_from):
+            messages.add_message(request, messages.WARNING,
+                                 'Username can only contain simple text (no special symbols, white spaces, or numbers).')
+        elif user_pass1 != user_pass2:
             messages.add_message(request, messages.WARNING, 'Your password did not match.')
         elif not re.match(password_pattern, user_pass1):
-            messages.add_message(request, messages.WARNING, 'Password must contain at least one character, one number, and one special symbol (@ $ ! % * # ? &), and be at least 8 characters long.')
+            messages.add_message(request, messages.WARNING,
+                                 'Password must contain at least one character, one number, and one special symbol (@ $ ! % * # ? &), and be at least 8 characters long.')
         else:
             try:
                 create_user = User.objects.create_user(username=user_from, password=user_pass1)
@@ -59,6 +54,7 @@ def RegisterPage(request):
             except IntegrityError:
                 messages.add_message(request, messages.WARNING, 'Username already exists.')
     return render(request, 'signup.html')
+
 
 def LoginPage(request):
     if request.method == 'POST':
@@ -74,7 +70,7 @@ def LoginPage(request):
             messages.add_message(request, messages.ERROR, 'Invalid username or password.')
             return redirect('login')
     return render(request, 'login.html')
-@login_required()
+@login_required(login_url="/login")
 def LogoutPage(request):
     logout(request)
     return redirect('login')
@@ -180,15 +176,60 @@ def home(request):
     return render(request, "stu_pannel/HomePage.html", data)
 
 def about(request):
-    return  render(request, "admin_pannel/about.html")
+    abo_data = About.objects.all()
+    dataclasses = {
+        'abo_data':abo_data
+    }
+
+    return  render(request, "admin_pannel/about.html", dataclasses)
+
 
 
 def career(request):
-    return render(request, "admin_pannel/career.html")
+    try:
+        cree_data = Careers.objects.all()
+        data = {
+            "cree_data": cree_data
+        }
+        if request.method == "POST":
+            job_ti = request.POST.get('job_title')
+            job_re = request.FILES.get('reusme')
+
+            # Now create the CareersSaveData instance using the job_tile_obj
+            CareersSaveData.objects.create(
+                job_tile=job_ti,
+                resume_upload=job_re
+            )
+            print(job_ti, job_re)
+
+            messages.add_message(request, messages.SUCCESS, "Successfully applied for this position.")
+            return redirect('career')
+        return render(request, "admin_pannel/career.html", data)
+    except Warning:
+        return render(request, "stu_pannel/error.html", {"error_message": "Page not respondins, someting went wrong..."})
+    except Exception as e:
+        return render(request, "stu_pannel/error.html", {"erro_message": str(e)})
+
 
 def contact(request):
-    return  render(request, "admin_pannel/contact.html")
-
+    try:
+        if request.method == "POST":
+            per_name = request.POST.get('name')
+            per_email = request.POST.get('email')
+            per_message = request.POST.get('message')
+            print(per_message, per_name, per_email)
+            object = Contact.objects.create(
+                person_name = per_name, person_email=per_email,
+                person_message=per_message
+            )
+            object.save()
+            messages.add_message(request, messages.SUCCESS, "You Query is post successfully...")
+            return redirect('contact')
+        return  render(request, "admin_pannel/contact.html")
+    except Warning:
+        return render(request, "stu_pannel/error.html", {"error_message": "Page not respondins, someting went wrong..."})
+    except Exception as e:
+        return render(request, "stu_pannel/error.html", {"erro_message": str(e)})
 
 def productdetails(request, id):
     try:
@@ -288,6 +329,18 @@ def add_to_wishlist(request, id):
     except Exception as e:
         return render(request, 'stu_pannel/error.html', {'error_message': str(e)})
 
+@login_required(login_url='/login')
+def remove_to_wislist(request, id):
+    try:
+        wislist_item = get_object_or_404(wislist, id=id)
+        wislist_item.delete()
+        messages.add_message(request, messages.SUCCESS , "Wislist Item removed...")
+        return redirect('home')
+    except CartItem.DoesNotExist:
+        return render(request, 'stu_pannel/error.html', {'error_message': 'Product Doestnot Exit'})
+    except Exception as e:
+        return render(request, 'stu_pannel/error.html', {'error_message': str(e)})
+
 
 @login_required(login_url='/login')
 def show_wislist(request):
@@ -304,7 +357,8 @@ def show_wislist(request):
         return render(request, 'stu_pannel/error.html', {'error_message': str(e)})
 
 
-
+RAZORPAY_API_KEY = "rzp_test_MTWvtlzlyTazey"
+RAZORPAY_API_SECRET = "LTU55dGZMZdNc30Ie0i008OF"
 order_user = []
 @login_required(login_url='/login')
 def payment(request):
@@ -468,3 +522,10 @@ def download(request):
     except Exception as e:
         return render(request, 'stu_pannel/error.html', {'error_message': str(e)})
 
+
+
+
+# ---------------------------------------------------------------------------------------------------    Admin Works Start here.
+
+def admin_login(request):
+    return render(request, 'admin_pannel/bash.html')

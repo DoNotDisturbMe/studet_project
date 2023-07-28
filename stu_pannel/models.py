@@ -62,6 +62,36 @@ class SupportUser(models.Model):
     support_totalpayment = models.IntegerField()
 
 
+class Careers(models.Model):
+    job_title = models.CharField(max_length=200)
+    job_location = models.CharField(max_length=200)
+    job_post_date = models.DateTimeField(auto_now_add=True)
+    skills_set = models.CharField(max_length=300)
+
+
+class CareersSaveData(models.Model):
+    job_tile = models.CharField(max_length=300)
+    resume_upload = models.FileField(upload_to='resume')
+
+
+
+
+class Contact(models.Model):
+    person_name = models.CharField(max_length=200)
+    person_email = models.EmailField()
+    person_message = models.CharField(max_length=3000)
+
+
+class About(models.Model):
+    about_message = models.CharField(max_length=6000)
+
+
+
+
+
+
+
+
 
 
 
