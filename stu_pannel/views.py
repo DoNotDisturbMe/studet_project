@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse, request, JsonResponse
-
 # Authentication System Module
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +10,6 @@ from django.db import transaction
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Order, SupportUser
 from django.db import IntegrityError
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import ExtendedUser
 import re
@@ -173,7 +171,7 @@ def userprofile_view(request, id):
 def home(request):
     Product_data = Product.objects.all()
     data = {"Product_data":Product_data}
-    return render(request, "stu_pannel/HomePage.html", data)
+    return render(request, "stu_pannel/index.html", data)
 
 def about(request):
     abo_data = About.objects.all()
